@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        @font-face {
+            font-family: "AL-KANZ Medium";
+            src: url("AL-KANZ FONTS.TTF");
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Arial", sans-serif;
+            background: linear-gradient(135deg, #a2c2e5, #f1f8ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        input:hover, input:focus {
+            border-color: #ec59bb;
+            transform: scale(1.05);
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            background-color: #138ea6;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff7cd3;
+            transform: scale(1.05);
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin: 15px;
+            display: none;
+}
+
+        .marquee {
+            font-family: "AL-KANZ Medium";
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 24px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+  <h1 class="marquee"></h1>
+
+    <div class="container">
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="checkLogin()">Login</button>
+         <p id="error-message" class="error-message">Sorry, Username or Password Dosesn't Match.</p>
+    </div>
+
+    <script>
+        function checkLogin() {
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+            let errorMessage = document.getElementById('error-message');
+            
+            if (username === "Chatti" && password === "Ceremony") {
+                window.location.href = "nginx/html/index.html";
+                localStorage.setItem("auth", "true"); // Store login session
+            } else {
+                errorMessage.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

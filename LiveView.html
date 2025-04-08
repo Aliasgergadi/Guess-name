@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Stream</title>
+
+    <!-- Video.js CSS -->
+    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.10.2/video.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/2.12.1/videojs-http-streaming.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        .video-container {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        #unmuteButton {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #unmuteButton:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Live Stream</h1>
+
+    <div class="video-container">
+        <video id="live-stream" class="video-js vjs-default-skin" controls autoplay playsinline muted width="800" height="450">
+            <source id="video-source" src="" type="">
+            Your browser does not support the video tag.
+        </video>
+        <button id="unmuteButton">Unmute</button>
+    </div>
+
+    <script>
+        var player = videojs('live-stream', {
+            liveui: true,
+            autoplay: 'muted',
+            controls: true,
+            responsive: true,
+            fluid: true
+        });
+
+        var currentSource = ""; // Track current source to avoid unnecessary reloads
+        var unmuteButton = document.getElementById("unmuteButton");
+
+        // Ensure autoplay works
+        player.play().catch(() => {
+            console.log("Autoplay blocked, keeping muted.");
+        });
+
+        // Show unmute button if video starts muted
+        player.ready(function () {
+            if (player.muted()) {
+                unmuteButton.style.display = "block";
+            }
+        });
+
+        // Unmute button click event
+        unmuteButton.addEventListener("click", function() {
+            player.muted(false);
+            player.volume(1);
+            unmuteButton.style.display = "none"; // Hide button after unmuting
+        });
+
+        function setStream(url, type) {
+            if (currentSource !== url) {
+                console.log("Switching to:", url);
+                player.src({ src: url, type: type });
+                player.play();
+                currentSource = url;
+            }
+        }
+
+        function checkStream() {
+            fetch("/hls/test.m3u8", { method: 'HEAD' })
+                .then(response => response.ok ? setStream("/hls/test.m3u8", "application/x-mpegURL") : checkDASH())
+                .catch(() => checkDASH());
+        }
+
+        function checkDASH() {
+            fetch("/dash/test.mpd", { method: 'HEAD' })
+                .then(response => response.ok ? setStream("/dash/test.mpd", "application/dash+xml") : retryStream())
+                .catch(() => retryStream());
+        }
+
+        function retryStream() {
+            console.log("No stream available, retrying in 5 seconds...");
+            setTimeout(checkStream, 5000);
+        }
+
+        checkStream(); // Start checking for the stream
+    </script>
+
+</body>
+</html>

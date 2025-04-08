@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Guess The Name logo.ico">
+  <title>Guess The Name</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #a2c2e5, #f1f8ff); /* Same background gradient */
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+    }
+
+    /* Container Styles */
+    .container {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+    }
+
+    a {
+      text-decoration: none;
+      padding: 20px 50px;
+      font-size: 28px;
+      color: #fff;
+      background: linear-gradient(135deg, #6a1b9a, #8e24aa); /* Same gradient as before */
+      border: none;
+      border-radius: 25px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease-in-out, transform 0.2s, box-shadow 0.3s ease-in-out;
+    }
+
+    /* Hover effect */
+    a:hover {
+      background: linear-gradient(135deg, #4a148c, #6a1b9a);
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    a:focus {
+      outline: none;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      a {
+        font-size: 24px;
+        padding: 15px 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      a {
+        font-size: 20px;
+        padding: 12px 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="Guessing.html" title="Guess The Baby Name">Guess The Name</a>
+    <a href="nginx/html/index.html" title="Live View of Ceremony">Live View</a>
+  </div>
+      <script>
+      document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+        e.preventDefault();
+    }
+});
+
+    </script>
+</body>
+</html>

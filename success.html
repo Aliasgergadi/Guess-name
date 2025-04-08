@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submitted Successfully</title>
+    <style>
+        @font-face {
+            font-family: heading;
+            src: url('AILERON-THIN.OTF');
+        }
+        body {
+            font-family: "heading", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f1f8ff;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+        }
+        h2 {
+            font-weight: 100;
+            font-size: 30px; /* Default size for larger screens */
+        }
+        button {
+            color: red;
+            font-size: 15px;
+            background-color: transparent;
+            border: none;
+            border-radius: 100px;
+            padding: 10px;
+            transition: background-color 0.2s;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: rgb(237, 237, 237);
+        }
+        
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 32px; /* Larger font size for mobile screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Thank You For Suggesting A Wonderful Name And Being Part of This Special Moment. Winner Gets Awarded!</h2>
+        <button onclick="window.location.href='Guessing.html';">Submit Again</button>
+    </div>
+        <script>
+      document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+        e.preventDefault();
+    }
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guess The Name</title>
+    <link rel="icon" type="image/x-icon" href="Guess The Name logo.ico">
+  <style>
+    @font-face {
+      font-family: "AL-KANZ Medium";
+      src: url("AILERON-THIN.OTF");
+    }
+
+    /* Universal Resets */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Background & Body Styling */
+    body {
+      font-family: "Arial", sans-serif;
+      background: linear-gradient(135deg, #a2c2e5, #f1f8ff); /* Soft blue gradient */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    /* Container Styling */
+    .container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: scale(1.05);
+    }
+
+    /* Title Styling */
+    h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* Form Group */
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 15px;
+      font-size: 16px;
+      border: 2px solid #ddd;
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+      border-color: #ff7cd3;
+      transform: scale(1.05);
+    }
+
+    /* Button Styling */
+    button {
+      width: 100%;
+      padding: 15px;
+      font-size: 18px;
+      background-color: #138ea6;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff7cd3;
+      transform: scale(1.05);
+    }
+
+    /* Loading Text */
+    #loading {
+      display: none;
+      margin-top: 10px;
+      font-size: 16px;
+      color: #138ea6;
+    }
+
+    /* Link Styling */
+    a {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      text-decoration: none;
+      color: white;
+      transition: color 0.3s ease;
+   
+    }
+
+    a:hover {
+      color: #ff7cd3;
+    }
+        .h {
+      position: absolute;
+      top: 20px;
+      left: 150px;
+      font-weight: bold;
+      font-size: 18px;
+      text-decoration: none;
+      color: white;
+      transition: color 0.3s ease;
+   
+    }
+
+    .h:hover {
+      color: #ff7cd3;
+    }
+
+    /* Created By Text */
+    .Create {
+      font-family: "AL-KANZ Medium";
+      font-size: 12px;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: #888;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      body {
+        font-size: 16px;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      input[type="text"], button {
+        font-size: 14px;
+        padding: 12px;
+      }
+
+      .container {
+        padding: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        font-size: 14px;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      input[type="text"], button {
+        font-size: 12px;
+        padding: 10px;
+      }
+
+      .container {
+        padding: 25px;
+        width: 100%;
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="LoginPage.html">Live View</a>
+    <a href="/" class="h">Home</a>
+  <div class="container">
+    <h2>Guess The Baby's Name</h2>
+    <form id="survey-form" autocomplete="off">
+      <div class="form-group">
+        <label for="name">Your Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="Name"
+          placeholder="Enter Your Name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="guess">Your Guess:</label>
+        <input
+          type="text"
+          id="guess"
+          name="Guess"
+          placeholder="Enter Your Guess"
+          required
+        />
+      </div>
+      <button type="submit" id="submit-btn">Submit</button>
+      <p id="loading">Submitting Your Response, Please Wait...</p>
+    </form>
+  </div>
+  <label class="Create">ⓘ Created and Designed by: Ali Asger Gadi</label>
+  <script src="script.js"></script>
+
+</body>
+</html>
+
+
+
